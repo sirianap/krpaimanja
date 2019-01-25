@@ -7,8 +7,8 @@
  *  3 South
  *  4 West
  */
-int pulang[1000];
-int maze[1000];
+short pulang[1000];
+short maze[1000];
 
 void setup() {
   maze[0]=-9;
@@ -58,7 +58,7 @@ int mapping(int a){
     moveWest();
     x++;
     maze[x]=4;
-    if(isFireAround){
+    if(isFireAround()){
       putFire();
       return 1; 
     }

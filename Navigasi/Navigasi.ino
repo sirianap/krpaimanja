@@ -54,7 +54,7 @@ int mapping(int a){
     mapping(x);
     return 0;
   }
-  if(isWestOpen){
+  if(isWestOpen()){
     moveWest();
     x++;
     maze[x]=4;

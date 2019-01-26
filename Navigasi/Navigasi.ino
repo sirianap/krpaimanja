@@ -29,7 +29,7 @@ int mapping(int a){
       putFire();
       return 1; 
     }
-    mapping(x);
+    if(mapping(x)==1) return 1;
     return 0;
   }
   if(isEastOpen()){
@@ -41,6 +41,7 @@ int mapping(int a){
       return 1; 
     }
     mapping(x);
+    if(mapping(x)==1) return 1;
     return 0;
   }
   if(isSouthOpen()){
@@ -52,6 +53,7 @@ int mapping(int a){
       return 1; 
     }
     mapping(x);
+    if(mapping(x)==1) return 1;
     return 0;
   }
   if(isWestOpen()){
@@ -63,6 +65,7 @@ int mapping(int a){
       return 1; 
     }
     mapping(x);
+    if(mapping(x)==1) return 1;
     return 0;
   }
 }

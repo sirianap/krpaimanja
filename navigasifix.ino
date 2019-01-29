@@ -7,76 +7,52 @@
  *  3 South
  *  4 West
  */
-short pulang[1000];
-short maze[1000];
+short pulang[10000];
+short maze[10000];
 
 void setup() {
-  maze[0]=-9;
+  maze[0]=9;
 }
 
 void loop() {
-  mapping(0);
-  mst();
-  back();
+  mapping(9,0);
 }
 int x=0;
-int mapping(int a){
-  if(isNorthOpen()){
-    moveNorth();
-    x++;
-    maze[x]=1;
-    if(isFireAround()){
+int mapping(int a, int b){
+  if(isFireAround()){
       putFire();
       return 1; 
-    }
-    if(mapping(x)==1){ 
-		moveSouth();
-		return 1;
-    }
-    moveSouth();
   }
-  if(isEastOpen()){
-    moveEast();
-    x++;
-    maze[x]=2;
-    if(isFireAround()){
-      putFire();
-      return 1; 
-    }
-    if(mapping(x)==1){ 
-		moveWest();
-		return 1;
-    }
-    moveWest();
-  }
-  if(isSouthOpen()){
-    moveSouth();
-    x++;
-    maze[x]=3;
-    if(isFireAround()){
-      putFire();
-      return 1; 
-    }
-    if(mapping(x)==1){ 
+  if(abs(a-maze[b-1])=2) return 0;
+  if(a==1){
+	if(isNorthOpen()){
 		moveNorth();
-		return 1;
-    }
-    moveNorth();
+	}  
   }
-  if(isWestOpen()){
-    moveWest();
-    x++;
-    maze[x]=4;
-    if(isFireAround()){
-      putFire();
-      return 1; 
-    }
-    if(mapping(x)==1){ 
+  if(a==2){
+	if(isEastOpen()){
 		moveEast();
-		return 1;
-    }
-    moveEast();
+	}
   }
+  if(a==3){
+	if(isSouthOpen()){
+		moveSouth();
+	}
+  }
+  if(a==4){
+	if(isWestOpen()){
+		moveWest();
+	}
+  }
+  x++;
+  maze[x]=a;
+  if(mapping(1,x)==1) return 1;
+  if(mapping(2,x)==1) return 1;
+  if(mapping(3,x)==1) return 1;
+  if(mapping(4,x)==1) return 1;
+  maze[x]=9;
+  move(abs(a-2));
+  return 0;
 }
 
 void putFire(){
@@ -119,4 +95,18 @@ void moveSouth(){
 }
 void moveEast(){
   
+}
+void move(int a){
+	if(a==1){
+		moveNorth();
+	}
+	if(a==2){
+		moveEast();
+	}
+	if(a==3){
+		moveSouth();
+	}
+	if(a==4){
+		moveWest();
+	}
 }

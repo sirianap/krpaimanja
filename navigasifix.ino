@@ -27,22 +27,30 @@ int mapping(int a, int b){
 	if(a==1){
 		if(isNorthOpen()){
 			moveNorth();
-		}  
+		}
+		else 
+			return 0;
 	}
 	if(a==2){
 		if(isEastOpen()){
 			moveEast();
 		}
+		else 
+			return 0;
 	}
 	if(a==3){
 		if(isSouthOpen()){
 			moveSouth();
 		}
+		else 
+			return 0;
 	}
 	if(a==4){
 		if(isWestOpen()){
 			moveWest();
 		}
+		else 
+			return 0;
 	}
 	maze[x]=a;
 	x++;
@@ -85,9 +93,6 @@ void moveEast(){
 void putFire(){
   
 }
-int isFireAround(){
-  
-}
 
 void mst(){
   
@@ -109,5 +114,8 @@ boolean isSouthOpen(){
 }
 
 boolean isEastOpen(){
+  
+}
+boolean isFireAround(){
   
 }
